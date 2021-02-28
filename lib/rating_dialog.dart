@@ -3,11 +3,12 @@ library rating_dialog;
 import 'package:flutter/material.dart';
 
 class _RatingDialogState extends State<RatingDialog> {
-  int _rating;
+  int _rating = 0;
 
   @override
   void initState() {
-    _rating = widget.initialRating;
+    if (widget.initialRating != null)
+      _rating = widget.initialRating;
     super.initState();
   }
 
