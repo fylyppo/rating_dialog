@@ -45,14 +45,9 @@ class _RatingDialogState extends State<RatingDialog> {
         children: <Widget>[
           widget.icon,
           const SizedBox(height: 4),
-          Text(widget.title,
-              style:
-                  const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          widget.title,
           const SizedBox(height: 4),
-          Text(
             widget.description,
-            textAlign: TextAlign.center,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: _buildStarRatingButtons(),
@@ -68,13 +63,8 @@ class _RatingDialogState extends State<RatingDialog> {
               children: <Widget>[
                 const Divider(),
                 FlatButton(
-                  child: Text(
+                  child:
                     widget.submitButton,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: widget.accentColor,
-                        fontSize: 18),
-                  ),
                   onPressed: () {
                     Navigator.pop(context);
                     widget.onSubmitPressed(
@@ -99,9 +89,6 @@ class _RatingDialogState extends State<RatingDialog> {
                   child: FlatButton(
                     child: Text(
                       widget.alternativeButton,
-                      style: TextStyle(
-                          color: widget.accentColor,
-                          fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
                       Navigator.pop(context);
@@ -143,10 +130,10 @@ class _RatingDialogState extends State<RatingDialog> {
 }
 
 class RatingDialog extends StatefulWidget {
-  final String title;
+  final Text title;
   final int initialRating;
-  final String description;
-  final String submitButton;
+  final Text description;
+  final Text submitButton;
   final String alternativeButton;
   final String positiveComment;
   final String negativeComment;
@@ -164,7 +151,7 @@ class RatingDialog extends StatefulWidget {
       @required this.onSubmitPressed,
       @required this.submitButton,
       this.initialRating,
-      this.accentColor = Colors.blue,
+      this.accentColor,
       this.alternativeButton = "",
       this.positiveComment = "",
       this.negativeComment = "",
